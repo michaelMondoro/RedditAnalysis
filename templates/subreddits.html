@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Popular{% endblock %}
+
+{% block content %}
+
+<div class="overflow-x-auto flex justify-center">
+    <div class="overflow-x-auto w-3/4">
+    <table class="table">
+        <!-- head -->
+        <thead>
+        <tr>
+            <th class="w-1/8">Subscribers</th>
+            <th class="w-2/8">Created</th>
+            <th class="">Name</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for i in subreddits %}
+        <!-- row 1 -->
+        <tr>
+            <td><b>{{ "{:,}".format(i.subscribers) }}</b></td>
+            <td><b>{{ i.created_utc.strftime("%b %d, %Y %I:%M %p") }}</b></td>
+            <td><a href=""><span class="badge badge-soft badge-info">{{ i.title }}</span></a></td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</div>
+
+{% endblock %}
